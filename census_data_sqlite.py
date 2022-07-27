@@ -217,8 +217,5 @@ insert_cen(cen_13)
 
 
 
-#def get_emps_by_name(lastname):
-    #c.execute("SELECT * FROM employees WHERE last=last", {'last': lastname})
-    #return c.fetchall()
 
 
