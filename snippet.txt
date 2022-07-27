@@ -1,30 +1,16 @@
 
-def insert_emp(emp):
+def insert_cen(emp):
     pass
 
 
-def get_emps_by_name(lastname):
+def update_percent_of_housing_crowded(cen, percent_of_housing_crowded):
     pass
 
 
-def update_pay(emp, pay):
-    pass
-
-
-def remove_emp(emp):
-    pass
-
-
-
-
-def update_pay(emp, pay):
+def update_percent_of_housing_crowded(cen, percent_of_housing_crowded):
     with conn:
-        c.execute("""UPDATE employees SET pay = :pay
-                    WHERE first = :first AND last = :last""",
-                  {'first': emp.first, 'last': emp.last, 'pay': pay})
+        c.execute("""UPDATE cencus_data SET percent_of_housing_crowded = :percent_of_housing_crowded
+                    WHERE community_area_name = :community_area_name AND percent_aged_under_18_or_over_64 = :percent_aged_under_18_or_over_64""",
+                  {'first': emp.community_area_name, 'percent_aged_under_18_or_over_64': emp.percent_aged_under_18_or_over_64, 'update_percent_of_housing_crowded': update_percent_of_housing_crowded})
 
 
-def remove_emp(emp):
-    with conn:
-        c.execute("DELETE from employees WHERE first = :first AND last = :last",
-                  {'first': emp.first, 'last': emp.last})

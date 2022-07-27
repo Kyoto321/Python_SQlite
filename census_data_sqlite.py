@@ -7,25 +7,25 @@ conn = sqlite3.connect(':memory:')
 c = conn.cursor()
 
 c.execute("""CREATE TABLE cencus_data (
-			COMMUNITY_AREA_NUMBER integer,
-			COMMUNITY_AREA_NAME text,
-			PECENTAGE_HOUSING_CROWDED integer,
-			PERCENTAGE_OF_HOUSEHOLD_BELOW_POVERTY integer,
-			PERCENTAGE_AGE_16_UNEMPLOYED integer,
-			PERCENTAGE_25_WITHOUT_HIGH_SCHOOL_DIPLOMA integer,
-			PERCENTAGE_AGED_UNDER_18_OR_OVER_64 integer,
-			PER_CAPITA_INCOME integer,
-			HARDSHIP_INDEX integer
+			community_area_number integer,
+			community_area_name text,
+			percent_of_housing_crowded integer,
+			percent_households_below_poverty integer,
+			percent_aged_16_unemployed integer,
+			percent_aged_25_without_high_school_diploma integer,
+			percent_aged_under_18_or_over_64 integer,
+			per_capita_income integer,
+			hardship_index integer
 			)""")
 
 
 def insert_cen(cen):
     with conn:
-    	c.execute("INSERT INTO cencus_data VALUES (:COMMUNITY_AREA_NUMBER, :COMMUNITY_AREA_NAME, :PECENTAGE_HOUSING_CROWDED, :PERCENT_HOUSEHOLDS_BELOW_POVERTY, :PERCENT_AGED_16__UNEMPLOYED, :PERCENT_AGED_25__WITHOUT_HIGH_SCHOOL_DIPLOMA, :PERCENT_AGED_UNDER_18_OR_OVER_64, :PER_CAPITA_INCOME, :HARDSHIP_INDEX)", 
+    	c.execute("INSERT INTO cencus_data VALUES (:community_area_number, :community_area_name, :percent_of_housing_crowded, :pecent_households_below_poverty, :pecent_aged_16_unemployed, :pecent_aged_25_without_high_school_diploma, :pecent_aged_under_18_or_over_64, :per_capital_income, :hardship_index)", 
     		{
     		'community_area_number': cen.cummunity_area_number,
     		'community_area_name': cen.community_area_name, 
-    		'percent_of_housing_crowded': cen.pencent_area_number,
+    		'percent_of_housing_crowded': cen.percent_of_housing_crowded,
     		'percent_households_below_poverty': cen.pecent_households_below_poverty,
     		'percent_aged_16_unemployed': cen.pecent_aged_16_unemployed,
     		'percent_aged_25_without_high_school_diploma': cen.pecent_aged_25_without_high_school_diploma,
@@ -200,7 +200,7 @@ insert_cen(cen_12)
 insert_cen(cen_13)
 
 
-
+conn.close()
 
 
 
